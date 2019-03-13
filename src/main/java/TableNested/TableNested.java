@@ -39,6 +39,7 @@ public class TableNested<K, V> {
                 .filter(entry -> entry.getKey().equals(key))
                 .findFirst().orElse(null);
     }
+
     private class Entry<K, V> {
         private K key;
         private V value;
