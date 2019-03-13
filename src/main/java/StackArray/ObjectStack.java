@@ -1,4 +1,4 @@
-package StackArray;
+package stackarray;
 
 import java.util.Arrays;
 
@@ -10,7 +10,29 @@ import java.util.Arrays;
 public class ObjectStack<E> {
     private Object[] elements;
 
-    public ObjectStack() {
+    private final int maxnumberOfElements;
+    private int length = 0;
 
+    public ObjectStack() {
+        this(100);
+    }
+
+    public ObjectStack(int maxnumberOfElements) {
+        this.maxnumberOfElements = maxnumberOfElements;
+        elements = (E[])new Object[maxnumberOfElements];
+    }
+
+    public boolean isEmpty() {
+        return length == 0;
+    }
+
+    public void push(E element) {
+        elements[length] = element;
+        length++;
+    }
+
+    public E pop() {
+        length --;
+        return (E)elements[length];
     }
 }

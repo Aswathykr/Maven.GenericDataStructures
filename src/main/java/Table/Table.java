@@ -1,4 +1,4 @@
-package Table;
+package table;
 
 import java.util.ArrayList;
 
@@ -10,8 +10,34 @@ import java.util.ArrayList;
  * Void return on `remove`.
  */
 public class Table<K, V> {
-    private ArrayList entries;
+    private ArrayList<Entry<K,V>> entries;
 
     public Table() {
+        entries = new ArrayList<>();
+    }
+
+    public V get(K key) {
+
+        Entry entryRetrieved = getEntry(key);
+        return (entryRetrieved != null) ? (V)entryRetrieved.getValue() : null;
+    }
+
+    public void put(K key, V value) {
+        remove(key);
+        Entry<K,V> entry = new Entry<>(key, value);
+
+        entries.add(entry);
+    }
+
+    public void remove(K key) {
+        Entry entryRetrieved = getEntry(key);
+        if(entryRetrieved != null)
+            entries.remove(entryRetrieved);
+    }
+
+    private Entry<K,V> getEntry(K key){
+        return entries.stream()
+                .filter(entry -> entry.getKey().equals(key))
+                .findFirst().orElse(null);
     }
 }

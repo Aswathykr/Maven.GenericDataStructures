@@ -1,4 +1,4 @@
-package Table;
+package table;
 
 public class Entry<K, V> {
     private K key;

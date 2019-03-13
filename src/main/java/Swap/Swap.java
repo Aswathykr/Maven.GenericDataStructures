@@ -1,4 +1,4 @@
-package Swap;
+package swap;
 
 /**
  * Keep this.  Just make it so the tests pass.

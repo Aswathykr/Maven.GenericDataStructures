@@ -1,4 +1,4 @@
-package Employee;
+package employee;
 
 public class Manager extends Employee {
     private double bonus;
