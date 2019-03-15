@@ -11,7 +11,7 @@ import java.util.Arrays;
  */
 public class GenericStack<E> {
     private E[] elements;
-    private final int maxnumberOfElements;
+    private int maxnumberOfElements;
     private int length = 0;
 
     public GenericStack() {
@@ -28,6 +28,12 @@ public class GenericStack<E> {
     }
 
     public void push(E element) {
+        if(length >= maxnumberOfElements){
+            E[] newArray = Arrays.copyOf(elements, length + maxnumberOfElements);
+            elements = newArray;
+            maxnumberOfElements = length + maxnumberOfElements;
+        }
+
         elements[length] = element;
         length++;
     }
